@@ -1,0 +1,39 @@
+{
+  "name": "jpmorgran-ecommerce",
+  "version": "1.0.0",
+  "description": "Mechis-Jeans\r Ecommerce para el proyecto integrador de Pescar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarinoSanz/JPMorgan-ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarinoSanz/JPMorgan-ecommerce/issues"
+  },
+  "homepage": "https://github.com/MarinoSanz/JPMorgan-ecommerce#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "debug": "^4.3.4",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "http-errors": "^2.0.0",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.8",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.23.2"
+  }
+}
