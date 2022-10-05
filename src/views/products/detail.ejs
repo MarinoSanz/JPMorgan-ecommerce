@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head") %>
+<style>
+    body{
+        background-image: url("https://i.ibb.co/gSSdWbv/alformbraroja.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        align-items: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    main {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        border-radius: 6px;
+        background: rgba(221, 221, 221, 0.85);
+        margin-left: 5em;
+        margin-right: 5em;
+        margin-top: 3em;
+        margin-bottom: 3em;
+        flex-wrap: wrap;
+    }
+    .submit {
+        background-color: #a52a2a;
+        border-radius: 6px;
+        border: 0;
+        color: #eee;
+        cursor: pointer;
+        font-size: 14px;
+        height: 38px;
+        margin: 1% 5%;
+        outline: 0;
+        text-align: center;
+        width: 10%;
+    }
+    main div{
+        width: 100%;
+    }
+    .principal{
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 4% 4% 1% 4%;
+        width:100%
+    }
+    .imagen-principal{
+        border-radius: 0.5%;
+        box-shadow: 50px #a52a2a;        
+        padding: 1%;
+    }
+    .detalle{
+        padding-right: 4%;       
+    }
+    .detalle li{
+        padding:3% ;
+        /* width:100%; */
+        list-style-type: none; 
+    }
+    .detalle .nombre-producto{
+        font-size: 50px;
+        font-weight: bold;
+        color:#000000;
+        text-align: center;
+    }
+    .detalle .cantidad{
+        font-size:large;
+        font-weight: bold;
+        color:#a52a2a;
+        text-align: center; 
+     }
+    #qty{
+         width: 10%;
+    }   
+    .detalle .precio{
+        font-size: 35px;
+        font-weight: 200;
+        color:#a52a2a;
+        text-align: center;
+    }
+    .detalle .submit{
+        background-color: #a52a2a;
+        border-radius: 6px;
+        border: 0;
+        color: #eee;
+        cursor: pointer;
+        font-size: 14px;
+        height: 38px;
+        margin-left: 25%;
+        outline: 0;
+        text-align: center;
+        width: 50%;
+    }
+    .submit:hover {
+        background:  #c9200a;
+    } 
+    .secundaria{
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 2% 3%;
+        width:100%;
+        justify-content: space-between;
+    }
+    .imagenes{
+        display:flex;
+        flex-grow: 50%;
+        justify-content: space-between;
+
+    }
+    .secundaria div img{
+        width: 25%;
+        padding: 0px 2%;
+        border-color: #c9200a;  
+    }
+    .medios-pago {
+        text-align: center;
+        align-items: center;
+    }
+    .medios-pago-titulo{
+        font-size: 35px;
+        font-weight: 200;
+        color:#a52a2a;
+        text-align: center;
+    }
+    .medios-pago img {
+        max-width: 45px;
+        height: 37px;
+    }
+    .tercera{
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: 100%;
+        display:flex;
+        padding: 1%;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: whitesmoke;
+        flex-direction: row;
+    }
+    /* .productDescripcion,
+    .productMateriales,
+    .productPesoDimensiones{} ESTO ERA LO QUE ME SALIA DE WARNING*/
+
+     @media (max-width: 769px) {
+    
+        html {
+            margin-top: 0px;
+        }
+        main { 
+            margin-left: 1.5em;
+            margin-right: 1.5em;
+            padding-top: 0;
+            margin-top: 4em;
+        }
+        
+        .principal {
+            display: block;
+            justify-items: center;
+            text-align: center;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            justify-content: space-between;
+        }
+        .principal img {
+            width: 90%;
+        }
+       #name {
+            font-size: 20px;
+            padding-right: 2.5em;
+        }
+        #precio {
+            font-size: 20px;
+            padding-right: 2.5em;
+        }
+        .detalle .cantidad {
+            font-size: 18px;
+            padding-right: 2.5em;
+        }
+        #prdImg {
+            height: 400px;
+            min-width: 268px;
+        }
+        .secundaria {
+            display: none;
+        }
+        button {
+            min-width: 100px;
+        }
+        #cartBtn {
+            margin-right: 10em;
+            margin-left: 18%;
+        }
+    
+        } 
+        @media (max-width: 450px) {
+            .tercera {
+                width: 98%;
+            }
+            h3 {
+                display: none;
+            }
+            .productMateriales {
+                display:none;
+            }
+            .productPesoDimensiones {
+                display: none;
+            }
+        }
+</style>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <div>
+        <a href="/productos">
+            <button type="text" class="submit">Volver</button>
+        </a>
+    </div>
+    <main>
+        <section class= principal>
+            <div class= imagen-principal>
+                <img id="prdImg" src="/images/products/<%= product.productImg %>" width="450px" height="500px" alt="imagen1">
+            </div>
+            <div class="detalle">
+                <ul>
+                    <li class="nombre-producto" id="name"><%= product.nombre%></li>
+                    <li class="precio" id="precio">$<%= product.precio%></li>
+                    <li class="cantidad">Cantidad <input type="number" min=1 id="qty" value="1"></li>                    
+                    <li><button type="text" id="cartBtn" class="submit">Agregar al Carrito</button></li>
+                </ul>
+                <div class="medios-pago">
+                    <p class="medios-pago-titulo">Métodos de pago</p>                   
+                        <img src="/images/mercadopago.png" alt="Mercadopago">
+                        <img src="/images/visa.png" alt="Visa">
+                        <img src="/images/americanexpress.png" alt="Amex">
+                        <img src="/images/mastercard.png" alt="Mastercard">
+                </div>
+            </div>
+        </section>
+        <section class="secundaria">
+            <!-- <div class="imagenes">
+                <img src="" alt="imagen2">
+                <img src="" alt="imagen3">
+                <img src="" alt="imagen4">
+                <img src="" alt="imagen5">
+            </div> -->
+
+        </section>
+        <section class="tercera">
+            <div class="productDescripcion" id="descripcion">
+                <h3>DESCRIPCIÓN</h3>
+                <%= product.descripcion%>
+            </div>
+            <div class="productMateriales">
+                <h3>MATERIALES</h3>
+                <%= product.materiales%>
+            </div>
+            <div class="productPesoDimensiones">
+                <h3>PESO Y DIMENSIONES</h3>
+                <p>Peso: <%= product.peso%></p>
+                <p>Dimensiones:<%= product.dimensiones%></p>
+             </div> 
+         </section>
+        <br>
+    </main>
+    <%- include("../partials/footer") %>
+    <script src="/js/addCart.js"></script>
+</body>
+</html>
+

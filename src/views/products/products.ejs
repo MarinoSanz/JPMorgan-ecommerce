@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+<style>
+    body{
+       background-image: url("https://i.ibb.co/gSSdWbv/alformbraroja.jpg");
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: cover;
+       align-items: center;
+       font-family: 'Roboto', sans-serif;      
+   }
+    h2{
+        color:rgb(0, 0, 0);
+        background-color: rgba(255, 255, 255, 0.2);
+        justify-content: center;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        display: none;
+    }
+    .buscador {
+        padding-top: 80px;
+        padding-left: 0;
+        display: flex;
+    }
+   .productos {
+        background-color: rgba(0, 0, 0, 0.3)
+    }
+    .categorias-productos {
+        
+        display: flex;
+    }
+    .categorias {
+        padding-left: 3em;
+        padding-right: 4em;
+
+        /* background-color: rgb(0, 0, 0); */
+        
+    }
+    .categorias ul {
+        padding-top: 2px;
+    
+    }
+    .categorias ul li {
+        padding-top: 7px;
+        padding-bottom: 7px;
+      
+    }
+    .categorias ul li a {
+    color: whitesmoke;
+    list-style-type: none;
+    text-decoration: none;
+    }
+    .btn-categoria {
+        display: block;
+        width: 100px;
+        padding: 0.5rem 1rem;
+        transition: all 0.2s linear;
+        border-radius: 5px;
+        color: whitesmoke;
+        background:  #a52a2a;
+        text-decoration: none;
+        text-align: center;
+    }
+    /* .btn-categoria:hover {
+        
+    }  */
+    .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-top: 20px;
+        
+    }
+   .col-4 {
+        flex-basis: 20%;
+        padding: 5px;
+        min-width: 200px;
+        margin-bottom: 50px;
+        transition: transform 0.5s;
+        background-color: rgba(253, 253, 253, 0.6)
+    }
+    .col-4 img {
+        width: 100%;
+    }
+    .col-4:hover {
+       transform: translateY(-6px)
+    }
+    .submit {
+        background-color: #a52a2a;
+        border-radius: 6px;
+        border: 0;
+        color: #eee;
+        cursor: pointer;
+        font-size: 14px;
+        height: 38px;
+        margin-left: 20%;
+        margin-right: 10%;
+        margin-bottom: 1%;
+        outline: 0;
+        text-align: center;
+        width: 60%;
+    }
+    .submitBuscar {
+        background-color: #a52a2a;
+        border-radius: 6px;
+        border: 0;
+        color: #eee;
+        cursor: pointer;
+        font-size: 14px;
+        height: 30px;
+        /* margin-left: 20%; */
+        /* margin-right: 10%; */
+        /* margin-bottom: 1%; */
+        outline: 0;
+        /* text-align: center; */
+        width: 30px;
+    }
+    .submit:hover {
+        background:  #c9200a;
+    } 
+
+    .productsNotFound {
+        padding: 180px 230px 180px 230px;
+        font-size: xx-large;
+        font-style: bold;
+        text-align: center;
+        color: snow;
+    
+    }
+
+    @media (max-width: 769px) {
+      .buscador {
+          padding-top: 100px;  
+      }
+      h2 {
+          text-align: center;
+      }
+      .col-4 {
+          height: 390px;
+      }
+      .productsNotFound {
+        padding: 6px 8px 18px 23px;
+    
+    }
+    }
+    @media (max-width: 450px) {
+      .row {
+          width: 100%;
+          padding: 10px 0 0 0;
+          margin: 0;
+      }
+      .col-4 {
+          min-width: 300px;
+      }
+      .col-4 img {
+          min-width: 299px;
+      }
+      .categorias-productos {
+        
+        display: block;
+    }
+    .categorias {
+        display: flex;
+        padding-left: 7em;
+    } 
+    .productsNotFound {
+        padding-top: 18px;
+    }
+
+    } 
+
+    @media (max-width: 376px) {
+        .categorias {
+        padding-left: 5em;
+        } 
+    } 
+
+    @media (max-width: 321px) {
+        .categorias {
+        padding-left: 3.5em;
+    } 
+    }   
+</style>
+<body>
+    <%- include("../partials/header.ejs") %>    
+<main>
+    <div class="buscador">
+        <ul>
+            <li><a class="btn-categoria" href="/productos">Ver todo</a></li>
+            <li>
+                <form class="form" action="/productos/buscar" method="GET">
+                    <div>
+                        <p class="searchError"></p>
+                        <input type="text" class="input" name="search" placeholder="Buscar productos"></input>
+                        <button type="submit" class="submitBuscar">
+                            <i class="fa fa-search">
+                            </i>
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="categorias-productos">
+        <div class="categorias">
+            <ul>
+                <% categorias.forEach( categoria => { %>                   
+                <li><a class="btn-categoria" href="/productos/buscar?search=<%= categoria.name %>"><%= categoria.name %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="productos">
+            <h2 class="titles">Nuestros productos</h2>
+                <div class="row">
+                    <% if(products.length > 0 ) { %>
+                    <% products.forEach( product => { %>
+                    <div class="col-4">
+                        <a href="/productos/<%= product.id %>">
+                            <img src="/images/products/<%= product.productImg %>" width="250px" height="300px" href="">
+                        </a>
+                        <h3><%= product.nombre %></h3>
+                        <p>$<%= product.precio %></p>
+                        <!-- <a href="/carrito">
+                            <button type="text" id="cartBtn" class="submit">Agregar al Carrito</button>
+                        </a> -->
+                    </div>
+                    <% })} else { %>
+                        <div class="productsNotFound">No se encontraron resultados! Por favor intentalo de nuevo.</div>
+                    <% } %>
+                </div>
+        </div>
+    </div>
+</main>
+<br>
+    <%- include("../partials/footer") %>
+    <script src="/js/addCart.js"></script>
+</body>
+</html>

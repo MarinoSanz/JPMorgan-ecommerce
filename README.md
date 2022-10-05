@@ -1,11 +1,18 @@
-Mechis-Jeans
-Ecommerce para el proyecto integrador de Pescar
+# Marino - TODOMUEBLES
 
-Project name: Mechis Jeans
+Link al Trello https://trello.com/b/y2RbfqBP/proyectointegrador
 
-Es un sitio web para la comercializacion de indumentaria femenina con tela de jean.
+Tematica del sitio
 
-Colaboradores:
-Angel Marino |
-Marco Massante |
+TODO Muebles® (nombre sujeto a potencial cambio) sera un sitio web en el cual cualquier usuario registrado podra tener a su alcance la facilidad de adquirir los mejores disenios de muebles modernos
+
+"Que el comprar sea tan comfortable como el mueble"
+
+Referentes
+
+https://www.vicalishop.com.ar/
+https://www.dxxi.com.ar/
+https://www.atumedida.com.ar/
+
+
 

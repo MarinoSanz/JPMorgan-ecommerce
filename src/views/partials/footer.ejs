@@ -1,0 +1,151 @@
+<style>
+/* footer {
+    text-align: center;
+    color: rgb(165, 42, 42);
+    font-weight: 700;
+} */
+
+.footer {
+    background:whitesmoke;
+    color: #5f5f5f;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+
+.footer p {
+    color: #8a8a8a;
+}
+
+.footer h3 {
+    color: rgb(45, 45, 45);
+    margin-bottom: 20px;
+}
+#h3-aparte {
+    margin-left: 2em;
+}
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-col-1 {
+    flex-basis: 30%;
+    margin-left: 1em;
+}
+
+.footer-col-2 {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-col-2 img {
+   width: 200px;
+   margin-bottom: 20px;
+}
+
+.footer-col-3, .footer-col-4 {
+    flex-basis: 12%;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    text-decoration: none;  
+   
+}
+a {
+    color:#5f5f5f;
+    list-style-type: none;
+    text-decoration: none;
+}
+.app-logo {
+    margin-top: 20px;
+}
+
+.app-logo img {
+    width: 130px;
+}
+
+.footer hr {
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+ .copyright {
+     text-align: center;
+ }
+
+ .row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    @media (max-width: 769px) {
+                    .footer-col-1 {
+                        display: none;
+                    }
+                    .footer-col-2 {
+                        display: none;
+                    }
+                    .horizontal-line {
+                        display: none;
+                    }
+                    .copyright {
+                        padding-left: 2em;
+                    }
+                    .footer {
+                        padding-top: 15px;
+                        padding-bottom: 5px;
+                    }
+                }
+    @media (max-width: 705px) {
+            .footer {
+                padding-right: 2.2em;
+            }    
+
+            }
+</style>
+
+<footer>
+    <div class="footer" id="footer">
+        <div class="row">
+            <div class="footer-col-1">
+               <h3 class="respons">Nuestra app</h3>
+               <p class="respons">Descarga nuestra app para Android o iOS</p>
+               <div class="app-logo">
+                   <a href="https://www.apple.com/app-store/" target="_blank"><img src="/images/appandplay.png" alt=""></a>
+               </div>
+            </div>
+            <div class="footer-col-2">
+                <a href="#header"><img src="/images/TodoMueble.png" alt=""></a>
+            </div>
+            <div class="footer-col-3">
+               <h3 id="h3-aparte">Contacto</h3>
+               <ul>
+                   <li>info@todomuebles.com<br>
+                       Tel: +99 101-7246
+                   </li>
+                   <li>Avenida Siempreviva 123</li>
+                   <li>Bangkok, Tailandia</li>
+               </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3 id="h3-aparte">Síguenos</h3>
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                    <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="horizontal-line">
+        <p class="copyright">Términos y condiciones - Copyright © 2022 Todo Muebles Inc.</p>
+    </div>
+</footer>
+
+<!-- <p><b><a href="#">Terminos y Condiciones</a></b></p>
+<p><b><a href="#">Información Legal></a></b></p>
+<p><b>Copyright © 2022 Todo Muebles Inc.</b></p> -->

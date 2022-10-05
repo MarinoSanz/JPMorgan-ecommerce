@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %>
+<style>
+    body{
+        background-image: url("https://i.ibb.co/gSSdWbv/alformbraroja.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        align-items: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    main {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        font-family: 'Roboto', sans-serif;
+        border-radius: 6px;
+        background: rgba(221, 221, 221, 0.85);
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .carrito { 
+        display:flex;
+        flex-wrap: wrap;
+        max-width: 800px;
+        height: auto;
+        background-color: rgb(190, 190, 190);
+        border-radius: 6px;
+        margin: 20px;
+        padding: 20px;
+    } 
+    .columnas{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        max-width: 780px;
+        height: 30px;
+        background-color: lightgray;
+        border-radius: 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 2px;
+        font-weight: 700;
+    }
+    #art{
+        margin-left: 10px;
+    }
+    #prec{
+        margin-left: 445px;
+    }
+    #cant{
+        margin-left: 70px;
+    }
+    article{
+        display:inline-flex;
+        flex-wrap: wrap;
+        max-width: 780px;
+        max-height: 110px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .imagen {
+        width: 100px;
+        height: 110px;
+    }
+    #imagen-art {
+        width: 100px;
+        height: 110px;
+    }
+    .description {
+        max-width: 400px;
+        height: 110px;
+        margin-left: 10px;
+        padding: 0px;
+    }
+    #precio-art {
+        margin-left: 10px;
+        margin-top: 45px;
+    }
+    #cant-art {
+        margin-left: 80px;
+        margin-top: 45px;
+    }
+    #value-cant {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border-radius: 6px;
+        border: 0;
+        background-color: rgb(231, 231, 231);
+    }
+    .qty {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center; 
+        color: rgb(206, 87, 87);
+    }
+    .eliminar{
+        font-size: 10px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 0;
+        margin-left: 50px;
+        margin-top: 45px;
+        padding-left: 3px;
+        background-color: lightslategrey;
+    }
+    .eliminar:hover{
+        background-color: rgb(197, 51, 51);
+    }
+    .total{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        max-width: 780px;
+        height: 30px;
+        background-color: lightgray;
+        border-radius: 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 2px;
+        font-weight: 700;
+    }
+    #total-word {
+        margin-left: 500px;
+    }
+    #total-monto {
+        margin-left: 100px;
+    }
+    .envio{
+        /* display:inline-block; */
+        display:flex;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 400px;
+        background-color: rgb(190, 190, 190);
+        border-radius: 6px;
+        margin: 20px;
+        padding: 20px;
+    }
+    .address{
+        width: 300px;
+        height: 160px;
+        background-color: lightgray;
+        border-radius: 6px;
+        padding-left: 10px;
+    }
+    .pay{
+        width: 300px;
+        height: 160px;
+        background-color: lightgray;
+        border-radius: 6px;
+        padding-left: 10px;
+        
+    }
+    #confirmar-boton{
+        background-color: rgb(165, 42, 42);
+        border-radius: 6px;
+        border: 0;
+        width: 250px;
+        text-align: center;
+        justify-content: center;
+        margin-left: 25px;
+        color: cornsilk;
+        font-size: 16px;
+    }
+    #confirmar-boton:hover{
+        background-color: rgb(197, 51, 51);
+    }
+    .interesar{
+        display:inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: 1200px;
+        height: 150px;
+        background-color: rgb(190, 190, 190);
+        border-radius: 6px;
+        margin: 20px;
+        padding: 20px;
+    } 
+    .article-2{
+        position: relative;
+        width: 120px;
+        height: 140px;
+        background-color: darkkhaki;
+        margin: 5px 50px 5px 80px;
+    }
+    #imagen-art2 {
+        display: block;
+        width: 120px;
+        height: 140px;
+    }
+    #overlay{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        color: blanchedalmond;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.25s;
+    }
+    #overlay:hover{
+            opacity: 1;
+         }
+    #overlay-title{
+        font-weight: 700;
+    }
+    #alter{
+        font-style: italic;
+        text-decoration-line: underline;
+        font-size: 14px;
+    }
+    @media (max-width: 769px) {
+        main {
+            margin-top: 80px;
+            margin-left: 85px;
+            margin-right: 90px;
+        }
+        .carrito {
+            max-width: 472px;
+        }
+        .columnas {
+            max-width: 461px;
+            
+        }
+        .total {
+            max-width: 461px;
+            height: 40px;
+        }
+        #prec {
+            margin-left: 195px;
+        }
+        #cant {
+            margin-left: 59px;
+           
+        }
+        #total-word{
+            margin-left: 276px;
+        }
+        #total-monto {
+            margin-left: 60px;
+        }
+        .envio {
+            width: 474px;
+        }
+        .address {
+            width: 455px;
+        }
+        .pay {
+            width: 455px;
+        }
+        #confirmar-boton {
+            margin-left: 105px;
+        }
+        }
+    @media (max-width: 750px) {
+        main {
+            margin-left: 1px;
+            margin-right: 6px;
+            margin-top: 60px;
+        }
+        .description p {
+            display: none;
+        }
+        .description #title {
+            display: block;
+            margin-left: -110px;
+            margin-right: 10px;
+            margin-top: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+        #art, #prec, #cant {
+            display: none;
+        }
+        #precio-art {
+            margin-right: -59px;
+        }
+        #carro {
+            height:100%;
+            display:inline-grid;
+        }
+        .total {
+            display: flex;
+            max-width: 268px;
+            margin-left: 28px;
+        }
+        .address, .pay {
+            display: none;
+        }
+        #confirmar-boton {
+            max-width: 150px;
+            max-height: 40px;
+            margin: 0;
+        }
+        .envio {
+            background-color: rgba(190, 190, 190, 0);
+            /* max-width: 160px; */
+            max-height: 50px;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+            position:static;
+            padding-left: 2.3em;
+            padding-right: auto;
+        }
+        .carrito {
+            margin: 20px 15px 1px 1px;
+            padding: 1px 15px 1px 1px;
+        }
+        #total-word {
+            margin-left: 1em;
+        }
+        #total-monto {
+            margin-left: 8em;
+            margin-right: 1em;
+        }
+        .eliminar {
+            margin-left: 28px;
+            }
+        }
+
+</style>
+    <body>
+        <%- include("../partials/header.ejs") %>
+    <br>
+    <br>
+    <main>
+       <div class="carrito"> 
+            <div class="columnas">
+                <p id="art">Artículos</p>
+                <p id="prec">Precio</p>
+                <p id="cant">Cantidad</p>
+            </div>
+            <div id="carro">
+               
+               
+            </div>
+            <div class="total">
+                <p id="total-word">Total carrito: </p>
+                <p id="total-monto" class="carritoTotal"></p>
+            </div>
+            <!-- <div class="row"> 
+             <div class="interesar">
+                 <p><b>Productos similares:</b></p>
+                 <div class="article-2">
+                     <a href="#"><img src="/images/Banca.JPG" id="imagen-art2" alt="Banca Tokyo"></a>
+                     <a href="#"><div id="overlay">
+                         <div id="overlay-title">Banca Tokyo</div>
+                         <p id="interesar-desc">$60.000</p>
+                     </div>
+                     </a>
+                  </div>
+                  <div class="article-2">
+                      <a href="#"><img src="/images/EstanteGrande.JPG" id="imagen-art2" alt="Estante Grande"></a>
+                      <a href="#"><div id="overlay">
+                          <div id="overlay-title">Estante</div>
+                          <p id="interesar-desc">$50.000</p>
+                      </div>
+                      </a>
+                   </div>
+                   <div class="article-2">
+                      <a href="#"><img src="/images/Mesa.JPG" id="imagen-art2" alt="MEsa"></a>
+                      <a href="#"><div id="overlay">
+                          <div id="overlay-title">Mesa Cali</div>
+                          <p id="interesar-desc">$99.000</p>
+                      </div>
+                      </a>
+                   </div>
+                   <div class="article-2">
+                      <img src="/images/MuebleTV.JPG" id="imagen-art2" alt="Mueble TV"></a>
+                      <a href="#"><div id="overlay">
+                          <div id="overlay-title">Mueble TV</div>
+                          <p id="interesar-desc">$23.000</p>
+                      </div>
+                      </a>
+                   </div>
+             </div>
+          </div> --> 
+        </div>
+        <div class="envio" >
+            <div class="address">
+                <p><b>Enviar a:</b></p>
+                 <p>Avenida Siempreviva 123
+                     Seattle, WA
+                     95514, USA</p>
+                    <p>Recibe: Cosme Fulanito</p>
+                 <p id="alter"><a href="#">Cambiar mi dirección de envio</a></p>
+             </div>
+            <div class="pay">
+                <p><b>Método de pago:</b></p>
+                <p>Tarjeta Visa Terminada en
+                 XXXX-8998
+                 </p>
+                <p>A nombre de: Cosme Fulanito</p>
+             <p id="alter"><a href="#">Cambiar mi método de pago</a></p>
+             </div>
+            <button id="confirmar-boton">Confirmar compra</button>
+        </div>  
+    </main> 
+    <br>
+    <%- include("../partials/footer") %>
+<script src="/js/cartView.js"></script>
+</body>
+</html>
+

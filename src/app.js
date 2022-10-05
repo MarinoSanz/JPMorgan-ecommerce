@@ -1,71 +1,43 @@
-//Módulos
-const path = require("path")
-const express = require('express');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-
-
-
+const express = require ("express");
 const app = express();
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const loginValidation = require("./middlewares/loginValidation")
+const mainRoutes = require("./routes/mainRoutes");
+const productsRoutes = require("./routes/productsRoutes");
+const checkoutRoutes = require("./routes/checkoutRoutes");
+const userRoutes = require("./routes/userRoutes");
 
-//Configuración
-app.use(express.static(path.join(__dirname, '../public')))
+const adminApiRoutes = require("./routes/adminApiRoutes")
+const methodOverride = require("method-override");
 
-//Engine (ejs)
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, './views'))
-app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 
-// Sesiones y cookies
 app.use(session({
-  secret: 'rodawise secret',
-  resave: false,
-  saveUninitialized: true,
+    secret:"selbum odot",
+    resave: false,
+    saveUninitialized:true,
 }));
+app.use(loginValidation)
 app.use(cookieParser());
-app.use(logger('dev'));
-
-// method-override para procesamiento de put y delete //
-const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
-
-//Middleware para la autentificacion de usuario
-const auth = require('./middlewares/auth');
-app.use(auth);
-
-//requerir middlewares para las rutas
-const adminRoute = require('./middlewares/adminRoute');
+app.use(methodOverride("_method"));
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 
-// Rutas
-/* rutas main, las rutas generales que no se agupan en ningun modulo de la web */
-const mainRoutes = require('./routes/mainRoutes')
-app.use('/', mainRoutes); 
+app.use("/", mainRoutes);
+app.use("/productos", productsRoutes);
+app.use("/carrito", checkoutRoutes);
+app.use("/", userRoutes);
+app.use("/", userRoutes);
+ 
+app.use("/admin", adminApiRoutes); 
 
-/* rutas productos, todo lo relacionado a productos */
-const productRoutes = require ('./routes/productRoutes')
-app.use('/products', productRoutes);
+app.use((req,res,next) => {
+    res.status(404).render("not-found")
+}); 
 
-/* rutas usuarios, todo lo relacionado a usuarios */
-const userRoutes = require ('./routes/userRoutes')
-app.use('/user', userRoutes);
-
-/* rutas administradores, todo lo relacionado a admin */
-const adminRoutes = require ('./routes/adminRoutes');
-app.use('/admin', adminRoute, adminRoutes);
-
-/*rutas api*/
-const apiRoutes = require ('./routes/apiRoutes');
-app.use('/api', apiRoutes);
-
-/* Error 404 */ 
-app.use((req, res, next) => {
-    res.status(404).render("error404", {styles:'styles-error404.css'});
-  })
-
-
-//Levantar servidor 
-app.listen(3001, ()=>{
-    console.log('Servidor funcionando en el puerto 3001');
-});
+app.listen (3030, () =>{console.log("server up")});

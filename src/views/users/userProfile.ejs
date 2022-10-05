@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head") %>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background-image: url("https://i.ibb.co/gSSdWbv/alformbraroja.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+       .hola-user {
+           padding-top: 80px;
+           margin-top: 0;
+       }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            }
+            h1 {
+                color: rgb(34, 33, 33);
+            }
+            h2 {
+                color: whitesmoke;
+            }
+            p {
+                color: rgb(220, 220, 220);
+            }
+            .title {
+            color: rgb(220, 220, 220);
+            font-size: 18px;
+            }
+
+            button {
+            border-radius: 6px;
+            border: 0;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #a52a2a;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            box-sizing: border-box;
+            height: 38px;
+            }
+
+            a {
+            text-decoration: none;
+            color: rgb(209, 209, 209);
+            }
+
+            button:hover {
+                background:  #c9200a;
+            }
+            @media (max-width: 769px) {
+        .card {
+            padding-top: 0;
+        }
+        .hola-user {
+            padding-top: 120px;
+        }
+        }
+      
+    </style>
+    <body>
+        <%- include("../partials/header.ejs") %>
+
+        <h1 class="hola-user">Hola <%= userLogged.firstName %>!</h1>
+        
+        <!-- <main>
+            <div>  </div>
+
+        </main> -->
+        <div class="card">
+            <img src="/images/users/<%= userLogged.userAvatar %>" alt="John" style="width:100%">
+            <h2><%= userLogged.firstName %> <%= userLogged.lastName %></h2>
+            <p>Email: <%= userLogged.email %></p>
+            <!-- <p>País: <%= userLogged.country %></p>
+            <p>Género: <%= userLogged.gender %></p> -->
+            <p>Fecha de nacimiento: <%= userLogged.date %></p>
+            <p>Teléfono: <%= userLogged.phoneNumber %></p>
+            <p><a href="/edicion/<%= userLogged.id %>"><button type="text" class="submit"><i class="fa fa-edit"></i> Editar mis datos</button></a></p>
+          </div>
+        <%- include("../partials/footer") %>    
+    </body>
+</html>
